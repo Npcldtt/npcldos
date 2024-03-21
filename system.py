@@ -92,6 +92,22 @@ def cmdd():
                 cmdd()
     elif cmd.startswith("exit"):
         print("")
+    elif cmd.startswith("read "):
+        file_path = cmd[5:]
+        if os.path.exists(file_path):
+            with open(file_path, 'r') as file:
+                print(file.read())
+        else:
+            print(f"Error listing directory '{file_path}'")
+            cmdd()
+    elif cmd.startswith("create "):
+        file_path = cmd[5:]
+        try:
+            with open(file_path, 'x'):
+                print(f'Created {file_path} file')
+        except FileExistsError:
+            print("File Already Exist")
+        cmdd()
     else:
         print("Command not recognized. Type help to look at the list of commands")
         cmdd()
@@ -126,24 +142,6 @@ def osstart():
     print(f"  Processor: {platform.processor()}")
     print(f"  Machine: {platform.machine()}")
     cmdd()
-
-def cmdd():
-    cmd = input("> ")
-    if cmd.startswith("dir "):
-            directory = cmd[4:]
-            try:
-                dir_list = os.listdir(directory)
-                for item in dir_list:
-                    print(item)
-                cmdd()
-            except OSError as e:
-                print(f"Error listing directory '{directory}': {e}")
-                cmdd()
-    elif cmd.startswith("exit"):
-        print("")
-    else:
-        print("Command not recognized. Type help to look at the list of commands")
-        cmdd()
 
 
 if is_file_empty("name.txt") and is_file_empty("password.txt"):
