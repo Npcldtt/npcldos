@@ -60,7 +60,7 @@ def register():
 def login():
     namefile = "name.txt"
     passfile = "password.txt"
-    with open('name.txt', 'r') as file:
+    with open(namefile, 'r') as file:
         name = file.read()
     print("Hello", name)
     pw = input("Please type password: ")
@@ -73,7 +73,7 @@ def login():
 
 def osstart():
     print("Welcome to npcldOS!")
-    print(f"  Operating System: npcldOS 1.0")
+    print(f"  Operating System: npcldOS 2.0")
     print(f"  Processor: {platform.processor()}")
     print(f"  Machine: {platform.machine()}")
     cmdd()
