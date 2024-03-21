@@ -92,14 +92,6 @@ def cmdd():
                 cmdd()
     elif cmd.startswith("exit"):
         print("")
-    elif cmd.startswith("read "):
-        file_path = cmd[5:]
-        if os.path.exists(file_path):
-            with open(file_path, 'r') as file:
-                print(file.read())
-        else:
-            print(f"Error listing directory '{file_path}'")
-            cmdd()
     elif cmd.startswith("create "):
         file_path = cmd[5:]
         try:
