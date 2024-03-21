@@ -56,6 +56,10 @@ def register():
     remove_single_quotes(namefile)
     remove_single_quotes(passfile)
     login()
+    clear_screen()
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def login():
     namefile = "name.txt"
@@ -67,6 +71,7 @@ def login():
     content = read_file(passfile)
     if content == pw:
         osstart()
+        clear_screen()
     else:
         print("Incorrect password. Please try again")
         login()
@@ -92,6 +97,8 @@ def cmdd():
                 cmdd()
     elif cmd.startswith("exit"):
         print("")
+    elif cmd.startswith("logout"):
+        login()
     elif cmd.startswith("create "):
         file_path = cmd[5:]
         try:
